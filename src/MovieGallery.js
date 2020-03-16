@@ -22,10 +22,7 @@ class MovieGallery extends Component {
 
   
   handleClickPage(e) {
-    let pageNum = e.target.id
-    console.log('debugger start');
-    debugger
-    console.log('debugger end');
+    let pageNum = e.target.id;    
     let nextView = getPage(pageNum, this.state.genres)
     
     this.setState({currentPage: pageNum, currentView: nextView});
@@ -74,7 +71,7 @@ class MovieGallery extends Component {
     
     let pageNumbers = this.renderPagelinks();
     let noBlankImages = this.state.currentView.filter(movie => movie.poster_path);
-    let movies = noBlankImages.map((movie) => {
+    let movies = noBlankImages.map((movie) => {     
       return (       
         <li 
         className="gallery-item"

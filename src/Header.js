@@ -6,30 +6,39 @@ import searchIcon from './magnifying-glass.svg'
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: 'Top Rated'}
+    this.state = {
+      selected: 'Top Rated',
+      searchTerm: ''
+    }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeSelect = this.handleChangeSelect.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    
   }
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleChangeSelect(event) {
+    this.setState({selected: event.target.value});
   }
 
-  handleSubmit(event) {
-    alert('Your favorite flavor is: ' + this.state.value);
+  handleSearch(event) {
     event.preventDefault();
+    this.setState({ searchTerm: event.target.value });
+   
+    
   }
+
+  
   render() {
     return (
       <div className="header">
-        <div className="logo">
-          Movie<span>Locker</span>
+        <div className="logo"><a href="/">Movie<span>Locker</span></a>
+          
         </div>
         <form className="search">
           <input
            type="text"
            className="search__input"
-           placeholder="Search..."/>
+           placeholder="Search..."
+           onChange={this.handleSearch}/>
           <button 
            type="submit"
            className="search__button"
@@ -40,15 +49,13 @@ class Header extends Component {
            </svg> */}
            </button>
         </form>
-         <form onSubmit={this.handleSubmit}>         
-            {/* <select value={this.state.value} onChange={this.handleChange}> */}
-            <select value="Top Rated" >
+         <form className="select-view" onSubmit={this.handleSubmit}>         
+            <select value={this.state.value} onChange={this.handleChangeSelect}>            
               <option value="In Cinema Now">In Cinema Now</option>
               <option value="Top Rated">Top Rated</option>
               <option value="Popular">Popular</option>
               <option value="Upcoming">Upcoming</option>
             </select>         
-          <input type="submit" value="Submit" />
         </form>
       </div>
     );
