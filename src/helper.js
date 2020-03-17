@@ -1,7 +1,10 @@
 // returns an array of movies given an array of objs and a page num
-export default function getPage(pageNum, arr) {  
-  console.log('helper', pageNum, arr)
-  let pageResult = arr.find(val => val.page === parseInt(pageNum, 10)); 
+export default function getPage(pageNum, arr) { 
   
+  if(arr.length === 0) {
+    return;
+  }  
+  let pageResult = arr.find(val => val.page === parseInt(pageNum, 10));
+  console.log('pageResults', pageNum, arr, pageResult);   
   return pageResult.results;
 }

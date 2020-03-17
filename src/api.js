@@ -46,7 +46,7 @@ export async function getGenres(id) {
   return Promise.all(promises);
 }
 
-
+// Get a number of pages of popular movies
 export async function getPopular(num) {
   let promises = [];
   for(let i = 1; i <= num; i++) { // loop through 10 pages

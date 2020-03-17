@@ -6,25 +6,33 @@ import Home from './Home';
 import Movie from './Movie';
 import MovieGallery from './MovieGallery';
 
-function Content( props ) {  
+function Content( props ) { 
+ const TESTPROP = {testProp: "TESTProp"};
   return (
     <div className="content">   
       <GenreList
-      genreIds={props.genreIds}
+      {...props}
        />
       <Switch>
-      <Route exact path="/" render={({match }) => (
+      <Route  exact path="/" render={({match }) => (
             <Home
              {...match}
-             popular={props.popular} />
+             {...props} />
+          )}
+        />       
+      <Route  path="/genre/:id" render={({match }) => (
+            <Home
+             {...match}
+             {...props}
+             {... TESTPROP} />
           )}
         />             
-        <Route path="/genre/:id" render={({match }) => (
+        {/* <Route path="/genre/:id" render={({match }) => (
             <MovieGallery
              {...match}
              {...props} />
           )}
-        />
+        /> */}
          <Route 
           path="/movie/:id"
           render={(routeProps) => (

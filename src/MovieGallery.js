@@ -31,17 +31,15 @@ class MovieGallery extends Component {
   // get a list of movies with a genre id
   async loadGenresWithIds(id) {
     try {
-      let genreList =  await apiCalls.getGenres(id);
-      console.log(genreList);
-      let currentView = getPage(this.state.currentPage, genreList); 
-      console.log('currnetView', currentView)
+      let genreList =  await apiCalls.getGenres(id);     
+      let currentView = getPage(this.state.currentPage, genreList);       
       this.setState({genres: genreList, currentView: currentView});
     } catch (err) {
       console.error(err);
     }
   }
 
-  componentDidMount() {
+  componentDidMount() {    
     this.loadGenresWithIds(this.props.params.id);  
   }
 

@@ -15,24 +15,24 @@ class Home extends Component {
      numPages: 10,
      currentPage: 1
    }
-
-   this.loadPopularCurrent();
-   this.handleClickPage = this.handleClickPage.bind(this);  
+  
+   this.onClickPage = this.onClickPage.bind(this);  
  }
 
- handleClickPage(e) {
-  let pageNum = e.target.id
-  debugger
-  let nextView = getPage(pageNum, this.state.popular);
-  
-  this.setState({currentPage: pageNum, currentView: nextView});
-}  
+ onClickPage(e) {
+  let pageNum = e.target.id;  
+  let nextView = getPage(pageNum, this.props.popular);  
+  return nextView;
+} 
 
+onUpdateView() {
+
+}
+
+ // initial state setup
  async loadPopularCurrent() {
-  try {
-
-    let popular =  await apiCalls.getPopular(this.state.numPages);
-    
+  try {    
+    let popular =  await apiCalls.getPopular(this.state.numPages);    
     let currentView= getPage(this.state.currentPage, popular);        
     this.setState({ popular, currentView });
   } catch (err) {
@@ -40,6 +40,29 @@ class Home extends Component {
   }
 }
 
+// get a list of movies with a genre id
+async loadGenresWithIds(id) {
+  try {
+    
+    let genreList =  await apiCalls.getGenres(id);     
+    let currentView = getPage(this.state.currentPage, genreList); 
+    console.log('loadGenresWithIds', id, currentView);
+
+    this.onUpdateView(currentView);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+componentDidUpdate(prevProps) {
+  
+  if(this.props.params.id === undefined || this.props.params.id === prevProps.params.id) {
+    console.log('componentDidUpdate if undedfined')
+    return;
+  }
+  //console.log('componentDidUpdate', this.props.params.id);
+ this.props.handleUpdateView(this.props.params.id)
+}
   
 
   renderPagelinks() {
@@ -49,17 +72,16 @@ class Home extends Component {
         <li
         key={i}
         id={i}
-        onClick={this.handleClickPage}
+        onClick={this.props.handleClickPage}
       >{i}</li>
       )
     }
     return (pageNumbers);
   }
 
-  render() {
-    let pageNumbers = this.renderPagelinks();
-    console.log('pageNumbers',pageNumbers);
-    let noBlankImages = this.state.currentView.filter(movie => movie.poster_path);
+  render() {    
+    let pageNumbers = this.renderPagelinks();    
+    let noBlankImages = this.props.currentView.filter(movie => movie.poster_path);
     // let movies = this.state.currentView.map((movie) => {
       let movies = noBlankImages.map((movie) => {
       return (       

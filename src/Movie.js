@@ -34,7 +34,7 @@ function Movie({ match, history}) {
 
   return (    
       <div className="movie-container" >
-        <div className="movie-overlay"></div>
+        <div className="movie-overlay" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}></div>
         <div className="movie-content" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}>
           <div className="movie-info">
           <h1>{movie.title}</h1>

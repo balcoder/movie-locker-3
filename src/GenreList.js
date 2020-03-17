@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
 import './scss/GenreList.scss';
@@ -10,7 +7,7 @@ import './scss/GenreList.scss';
 
 
 
-function GenreList({genreIds}) {       
+function GenreList({ genreIds }) {       
     let links = genreIds.map(val => (
     <li
      key={val.id}
@@ -19,7 +16,8 @@ function GenreList({genreIds}) {
     <Link 
     to={`/genre/${val.id}`}
     className="genre-link"    
-    data-genre-id={val.id}>
+    data-genre-id={val.id}    
+    >
     {val.name}
     </Link> 
     </li>
@@ -31,6 +29,10 @@ function GenreList({genreIds}) {
     );
 
 }
+
+
+
+
 
 
 
