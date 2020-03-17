@@ -78,6 +78,7 @@ class App extends Component {
         popular={this.state.popular}
         currentView={this.state.currentView}
         genreIds={this.state.genreIds}
+        currentPage={this.state.currentPage}
         handleClickPage={this.handleClickPage}
         handleUpdateView={this.handleUpdateView}/>        
        <Footer />

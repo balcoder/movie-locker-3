@@ -33,7 +33,7 @@ onUpdateView() {
  async loadPopularCurrent() {
   try {    
     let popular =  await apiCalls.getPopular(this.state.numPages);    
-    let currentView= getPage(this.state.currentPage, popular);        
+    let currentView= getPage(this.props.currentPage, popular);        
     this.setState({ popular, currentView });
   } catch (err) {
     console.error(err);
@@ -45,7 +45,7 @@ async loadGenresWithIds(id) {
   try {
     
     let genreList =  await apiCalls.getGenres(id);     
-    let currentView = getPage(this.state.currentPage, genreList); 
+    let currentView = getPage(this.props.currentPage, genreList); 
     console.log('loadGenresWithIds', id, currentView);
 
     this.onUpdateView(currentView);

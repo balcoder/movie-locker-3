@@ -37,7 +37,7 @@ export async function getGenre() {
 // }
 export async function getGenres(id) {
   let promises = [];
-  for(let i = 1; i <= 5; i++) { // loop through 5 pages
+  for(let i = 1; i <= 10; i++) { // loop through 5 pages
     // console.log(i);
     // console.log(`${GENREURL}${i}&with_genres=${id}`)
  promises.push(fetch(`${GENREURL}${i}&with_genres=${id}`)
