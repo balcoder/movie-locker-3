@@ -7,17 +7,18 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'Top Rated',
+      selected: '',
       searchTerm: ''
     }
 
-    this.handleChangeSelect = this.handleChangeSelect.bind(this);
+    this.onChangeSelect = this.onChangeSelect.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);   
     
   }
-  handleChangeSelect(event) {
+  onChangeSelect(event) {
     this.setState({selected: event.target.value});
+    this.props.handleSelect( event.target.value);
   }
 
   handleSubmit(event) {
@@ -59,11 +60,10 @@ class Header extends Component {
            </svg> */}
            </button>
         </form>
-         <form className="select-view" onSubmit={this.handleSubmit}>         
-            <select value={this.state.value} onChange={this.handleChangeSelect}>            
+         <form className="select-form" onSubmit={this.handleSubmit}>         
+            <select className="select-view" value={this.state.value} onChange={this.onChangeSelect}>            
               <option value="In Cinema Now">In Cinema Now</option>
-              <option value="Top Rated">Top Rated</option>
-              <option value="Popular">Popular</option>
+              <option value="Top Rated">Top Rated</option>             
               <option value="Upcoming">Upcoming</option>
             </select>         
         </form>

@@ -65,10 +65,11 @@ componentDidUpdate(prevProps) {
     for(let i = 1; i <= this.props.numPages; i++) {
       pageNumbers.push(
         <li
+        className="li-page-num"
         key={`${i}-${this.props.currentPage}`}
         id={i}
         onClick={this.props.handleClickPage}
-      >{i}</li>
+      ><span className="span-page-num">{i}</span></li>
       )
     }
     return (pageNumbers);

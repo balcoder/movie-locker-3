@@ -50,16 +50,31 @@
 	// flex-direction: row;
 	flex-flow: row wrap;
 	justify-content: space-evenly;
+	position: relative;
 
 	& li {
-		border: 2px solid white;
-		padding: 10px;
-		border-radius: 10px;
-		
+		border: 2px solid rgb(216, 212, 212);
+		background-color: goldenrod;		
+		width: 40px;
+  	height: 40px;
+		padding: 0;
+		top: 10px;
+		border-radius: 50%;
+		box-shadow: 0 3px 6px rgba(218, 165, 32, .16), 0 3px 6px rgba(218, 165, 32, .23);		
 		&:hover {
 			cursor: pointer;
+			background-color: rgb(189, 143, 27);
+		}
+
+		& span {
+			position: relative;
+			top: 9px;			
 		}
 	}
+}
+// prevent clicking on the span number element 
+.li-page-num > * {
+ pointer-events: none;
 }
 
 // Responsive Styles

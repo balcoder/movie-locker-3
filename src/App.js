@@ -15,7 +15,8 @@ class App extends Component {
       currentView: [],
       genreIds: [],
       currentPage: 1,
-      numPages: 1
+      numPages: 1,
+      selected: null
     }
     // initial state setup
     this.loadPopular();
@@ -24,6 +25,7 @@ class App extends Component {
     this.handleClickPage = this.handleClickPage.bind(this);
     this.handleUpdateView = this.handleUpdateView.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
 
   }
   async loadPopular() {
@@ -75,8 +77,20 @@ class App extends Component {
     }
   }
 
+  async loadSelected(term) {
+    let selectedResults  = await apiCalls.getSelected(term);    
+    let numPages = selectedResults.length;
+    let page1 = selectedResults[0].results;
+    this.setState({
+      currentViewList: selectedResults,
+      currentView: page1,
+      numPages
+    })
+  }
+
   handleClickPage(e) {
-      let pageNum = e.target.id        
+      let pageNum = e.target.id
+      console.log('span click::',e)        
       let nextView = getPage(pageNum, this.state.currentViewList);      
       this.setState({currentPage: pageNum, currentView: nextView});
     }
@@ -90,6 +104,10 @@ class App extends Component {
       
     }
 
+    handleSelect(term) {
+      this.loadSelected(term);
+    }
+
   
 
   componentDidMount()  {
@@ -101,6 +119,7 @@ class App extends Component {
       <div className="App">
        <Header
        handleSearch={this.handleSearch}
+       handleSelect={this.handleSelect}
        />
        <Content       
         popular={this.state.currentViewList}

@@ -23,23 +23,55 @@
   
 }
 
+// .movie-content {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   z-index: 2;
+//   background-position: center;
+//   background-repeat: no-repeat; 
+//   background-size: cover;
+//   width: 70%;
+//   height: 70%;
+//   border: 2px solid white;
+//   padding: 0;
+//   text-align: center;
+//   filter: none;
+//   color:white;
+// }
+
 .movie-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-size: cover;
-  width: 70%;
-  height: 70%;
-  border: 2px solid white;
-  padding: 0;
-  text-align: center;
-  filter: none;
-  color:white;
-}
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+   
+    width: 70%;
+    height: 70%;
+    border: 2px solid white;
+    padding: 0;
+    text-align: center;
+    filter: none;
+    color:white;
+  }
+
+  .movie-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+  }
+  
+
+// .movie-info {
+//   background-color: rgb(51, 50, 50);
+//   opacity: 1;
+// }
 
 .movie-info {
   background-color: rgb(51, 50, 50);

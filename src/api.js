@@ -3,10 +3,11 @@ const APIURL = 'https://api.themoviedb.org/3/';
 const GENRESURL = `${APIURL}genre/movie/list?api_key=${KEY}&language=en-US&include_adult=false&page=1`;
 const GENREURL = `${APIURL}discover/movie?api_key=${KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=`;
 const POPULARURL = `${APIURL}discover/movie?api_key=${KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=`;
-const INNOWURL = `${APIURL}discover/movie?api_key=${KEY}&language=en-US&page=2&primary_release_date.gte=2020-02-05&primary_release_date.lte=2020-03-04`;
+const INNOWURL = `${APIURL}discover/movie?api_key=${KEY}&language=en-US&region=US&release_date.gte=2020-02-19&release_date.lte=2020-03-19&with_release_type=3|2;`
 const TOPRATEDURL = `${APIURL}movie/top_rated?api_key=${KEY}&language=en-US&page=1`
 const SEARCHURL = `${APIURL}search/movie?api_key=${KEY}&language=en-US&include_adult=false`
-
+const INCINEMANOW =`${APIURL}discover/movie?api_key=${KEY}&language=en-US&region=US&release_date.gte=2020-02-19&release_date.lte=2020-03-19&with_release_type=3|2;`;
+const UPCOMING = `${APIURL}movie/upcoming?api_key=${KEY}`;
 
 //hand the response from our async fetch to handleError
 function handleError(res) {
@@ -45,17 +46,7 @@ export async function getGenres(id) {
   }
   return Promise.all(promises);
 }
-// // get a list of movies with a genre id (like 'Action' = 27)
-// export async function getGenres(id) {
-//   let promises = [];
-//   for(let i = 1; i <= 10; i++) { // loop through 5 pages
-//     // console.log(i);
-//     // console.log(`${GENREURL}${i}&with_genres=${id}`)
-//  promises.push(fetch(`${GENREURL}${i}&with_genres=${id}`)
-//     .then(res => handleError(res)))
-//   }
-//   return Promise.all(promises);
-// }
+
 
 // Get a number of pages of popular movies
 export async function getPopular() {
@@ -72,21 +63,7 @@ export async function getPopular() {
   }
   return Promise.all(promises);  
 }
-// // Get a number of pages of popular movies
-// export async function getPopular(num) {
-//   let promises = [];
-//   for(let i = 1; i <= num; i++) { // loop through 10 pages
-//     promises.push(fetch(POPULARURL + i )
-//       .then(res => handleError(res)))
-//   }
-//   return Promise.all(promises);  
-// }
 
-// // Get a  list of movies based on search term
-// export async function getSearch(phrase) {
-//   return fetch(`${SEARCHURL}&query=${phrase}`)
-//     .then(res => handleError(res))
-// }
 
 // Get a  list of movies based on search term
 export async function getSearch(phrase) {
@@ -108,7 +85,36 @@ export async function getInTheCinemaNow() {
     .then(res => handleError(res))
 }
 
-export async function getTopRated() {
-  return fetch(TOPRATEDURL)
-    .then(res => handleError(res))
+export async function getSelected(term) {
+  
+  let url = '';
+  switch (term) {
+    case 'Top Rated':
+      url = TOPRATEDURL;
+      console.log('getSelected:::TopRated',TOPRATEDURL) 
+      break;
+    case 'In Cinema Now':
+      url = INCINEMANOW;
+      console.log('getSelected:::Incinema',INCINEMANOW)
+      break;
+    case 'Upcoming':
+      url = UPCOMING;
+      console.log('getSelected:::Upcoming',UPCOMING)
+      break;
+    default:
+      url = TOPRATEDURL;
+      console.log('getSelected:::Default',TOPRATEDURL)
+  }  
+  let promises = []; 
+  // Get the number of pages from the search term
+  let page_results = await fetch(url)
+    .then(res => handleError(res));    
+  let pages = page_results.total_pages;
+  let numPages = pages < 10 ? pages : 10;
+  for(let i = 1; i <= numPages; i++) {
+    promises.push(fetch(`${url}&page=${i}`)
+    .then(res => handleError(res)))
+  }    
+  return Promise.all(promises);
 }
+  

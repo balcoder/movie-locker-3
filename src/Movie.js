@@ -40,21 +40,21 @@ function Movie({ match, history}) {
   return (    
       <div className="movie-container" >
         <div className="movie-overlay" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}></div>
-        <div className="movie-content" style={{backgroundImage: `url(${IMGURL}w1280${movie.poster_path})` }}>
+        <div className="movie-content">          
           <div className="movie-info">
-          <h1>{movie.title}</h1>
-          <p>{movie.overview}</p>
-          <button
-            className="btn"
-            onClick={history.goBack}
-            >
-          Go Back
-          </button>
-          <button className="btn">
-          <a href={movieUrl} target="_blank">Trailer</a>
-          </button>
-          
+            <h1>{movie.title}</h1>
+            <p>{movie.overview}</p>
+            <button
+              className="btn"
+              onClick={history.goBack}
+              >
+            Go Back
+            </button>
+            <button className="btn">
+            <a href={movieUrl} target="_blank">Trailer</a>
+            </button>          
           </div>
+          <div className="movie-img"  style={{backgroundImage: `url(${IMGURL}w1280${movie.poster_path})` }}></div>
           
           
         </div>       
