@@ -11,9 +11,9 @@ class Home extends Component {
    super(props);
    this.state = {
      popular: [],
-     currentView: [],
-     numPages: 10,
-     currentPage: 1
+     currentView: []
+    
+     
    }
   
    this.onClickPage = this.onClickPage.bind(this);  
@@ -24,10 +24,6 @@ class Home extends Component {
   let nextView = getPage(pageNum, this.props.popular);  
   return nextView;
 } 
-
-onUpdateView() {
-
-}
 
  // initial state setup
  async loadPopularCurrent() {
@@ -42,8 +38,7 @@ onUpdateView() {
 
 // get a list of movies with a genre id
 async loadGenresWithIds(id) {
-  try {
-    
+  try {    
     let genreList =  await apiCalls.getGenres(id);     
     let currentView = getPage(this.props.currentPage, genreList); 
     console.log('loadGenresWithIds', id, currentView);
@@ -67,10 +62,10 @@ componentDidUpdate(prevProps) {
 
   renderPagelinks() {
     let pageNumbers = [];
-    for(let i = 1; i <= this.state.numPages; i++) {
+    for(let i = 1; i <= this.props.numPages; i++) {
       pageNumbers.push(
         <li
-        key={i}
+        key={`${i}-${this.props.currentPage}`}
         id={i}
         onClick={this.props.handleClickPage}
       >{i}</li>
@@ -103,12 +98,13 @@ componentDidUpdate(prevProps) {
       }); 
       return (
         <div className="movie-gallery">
+          <ul className="pageLinks">
+             {pageNumbers}
+           </ul>
            <ul className="gallery">
            {movies}
            </ul> 
-           <ul className="pageLinks">
-             {pageNumbers}
-           </ul>
+           
         </div>
       );
   }

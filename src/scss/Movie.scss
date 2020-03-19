@@ -4,21 +4,21 @@
   display: flex;  
   flex: column;
   align-items: center;  
-  color: white; 
+  color: white;
+  position: relative; 
 }
 
 .movie-overlay {
-  filter: blur(6px);
-  -webkit-filter: blur(6px);
-   min-height: 92vh;
-   z-index: -100;
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+  min-height: 90vh;
+   z-index: 1;
+   width: 100%;
 
   /* Center and scale image */
   background-position: center;
   background-repeat: no-repeat; 
   background-size: cover;
-  // background-image: linear-gradient(to right bottom, rgb(102, 102, 236), blue);
-  // background-repeat: no-repeat;
   
   
 }
@@ -31,11 +31,11 @@
   z-index: 2;
   background-position: center;
   background-repeat: no-repeat; 
-  background-size: contain;
+  background-size: cover;
   width: 70%;
   height: 70%;
   border: 2px solid white;
-  padding: 20px;
+  padding: 0;
   text-align: center;
   filter: none;
   color:white;
@@ -43,5 +43,26 @@
 
 .movie-info {
   background-color: rgb(51, 50, 50);
-  opacity: .8;
+  opacity: 1;
 }
+
+.btn {
+  background-color: goldenrod;
+  color: #fff;
+  border: none;
+  border-radius: 0;  
+  font-size: .8rem;
+  text-transform: uppercase;
+  padding: .5rem .75rem;
+  cursor: pointer;
+  opacity: none;
+  transition: all .2s;
+  &:hover {
+    background-color: rgb(158, 120, 25);
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}  
+  

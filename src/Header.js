@@ -12,16 +12,23 @@ class Header extends Component {
     }
 
     this.handleChangeSelect = this.handleChangeSelect.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
+    this.onSearch = this.onSearch.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);   
     
   }
   handleChangeSelect(event) {
     this.setState({selected: event.target.value});
   }
 
-  handleSearch(event) {
+  handleSubmit(event) {
     event.preventDefault();
-    this.setState({ searchTerm: event.target.value });
+    this.props.handleSearch(this.state.searchTerm);
+  }
+
+  onSearch(event) {
+    event.preventDefault();
+    this.setState({searchTerm: event.target.value});
+    
    
     
   }
@@ -33,12 +40,15 @@ class Header extends Component {
         <div className="logo"><a href="/">Movie<span>Locker</span></a>
           
         </div>
-        <form className="search">
+        <form
+          onSubmit={this.handleSubmit}
+          className="search">
           <input
            type="text"
            className="search__input"
            placeholder="Search..."
-           onChange={this.handleSearch}/>
+           value={this.state.searchTerm}
+           onChange={this.onSearch}/>
           <button 
            type="submit"
            className="search__button"

@@ -26,16 +26,21 @@ function Movie({ match, history}) {
 
 
   const [movie, setMovie] = useState([]); // the useState hook is a way to provide state to functional components
+  const [movieUrl, setMovieUrl] = useState('');
 
   const getMovie = async (id) => {    
-    let movie = await fetch(`${BASEURL}${id}${ENDURL}`).then(res => res.json());    
+    let movie = await fetch(`${BASEURL}${id}${ENDURL}&append_to_response=videos`).then(res => res.json());
+    console.log('MovieURL:::::',movie.videos.results[0].key);
+    let movieUrl =  `https://www.youtube.com/watch?v=${movie.videos.results[0].key}`
+    setMovieUrl(movieUrl);   
     setMovie(movie);
+
   }
 
   return (    
       <div className="movie-container" >
         <div className="movie-overlay" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}></div>
-        <div className="movie-content" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}>
+        <div className="movie-content" style={{backgroundImage: `url(${IMGURL}w1280${movie.poster_path})` }}>
           <div className="movie-info">
           <h1>{movie.title}</h1>
           <p>{movie.overview}</p>
@@ -45,6 +50,10 @@ function Movie({ match, history}) {
             >
           Go Back
           </button>
+          <button className="btn">
+          <a href={movieUrl} target="_blank">Trailer</a>
+          </button>
+          
           </div>
           
           

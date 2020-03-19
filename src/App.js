@@ -6,27 +6,32 @@ import getPage from './helper';
 import * as apiCalls from './api';
 import './App.css';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {      
-      popular: [],
+      currentViewList: [],
       currentView: [],
       genreIds: [],
-      currentPage: 1
+      currentPage: 1,
+      numPages: 1
     }
-    
+    // initial state setup
     this.loadPopular();
     this.loadGenreIds();
+
     this.handleClickPage = this.handleClickPage.bind(this);
     this.handleUpdateView = this.handleUpdateView.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
 
   }
   async loadPopular() {
     try {
-      let popular =  await apiCalls.getPopular(10);
-      let currentView= getPage(this.state.currentPage, popular);           
-      this.setState({ currentView, popular });
+      let currentViewList =  await apiCalls.getPopular();
+      let numPages = currentViewList.length;
+      let currentView= getPage(this.state.currentPage, currentViewList);           
+      this.setState({ currentView, currentViewList , numPages});
     } catch (err) {
       console.error(err);
     }
@@ -44,11 +49,27 @@ class App extends Component {
     // get a list of movies with a genre id
   async loadGenresWithIds(id) {
     try {      
-      let genreList =  await apiCalls.getGenres(id);     
+      let genreList =  await apiCalls.getGenres(id);
+      let numPages = genreList.length;     
       let currentView = getPage(this.state.currentPage, genreList); 
       //console.log('loadGenresWithIds', id, currentView);
 
-      this.setState({currentView})
+      this.setState({currentView, currentViewList: genreList, numPages})
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async loadSearchResults(phrase) {
+    try {
+      let searchResults = await apiCalls.getSearch(phrase);
+      let numPages = searchResults.length;
+      let page1 = searchResults[0].results
+      
+      this.setState({
+        currentViewList: searchResults,
+        currentView: page1,
+        numPages})
     } catch (err) {
       console.error(err);
     }
@@ -56,12 +77,17 @@ class App extends Component {
 
   handleClickPage(e) {
       let pageNum = e.target.id        
-      let nextView = getPage(pageNum, this.state.popular);      
+      let nextView = getPage(pageNum, this.state.currentViewList);      
       this.setState({currentPage: pageNum, currentView: nextView});
     }
     
     handleUpdateView(id) {
       this.loadGenresWithIds(id);      
+    }
+
+    handleSearch(phrase) {
+      this.loadSearchResults(phrase);    
+      
     }
 
   
@@ -73,14 +99,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <Header />
+       <Header
+       handleSearch={this.handleSearch}
+       />
        <Content       
-        popular={this.state.popular}
+        popular={this.state.currentViewList}
         currentView={this.state.currentView}
         genreIds={this.state.genreIds}
+        numPages={this.state.numPages}
         currentPage={this.state.currentPage}
         handleClickPage={this.handleClickPage}
-        handleUpdateView={this.handleUpdateView}/>        
+        handleUpdateView={this.handleUpdateView}
+        />        
        <Footer />
       </div>
     );
