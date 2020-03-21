@@ -1,0 +1,35 @@
+.footer {
+  background-color: #263f44;
+  background: -webkit-linear-gradient(59deg, #263f44, #16222A);
+  background: linear-gradient(59deg, #517881, #263f44);
+  min-height: 80px;
+  height: 10vh;
+  width : 100vw;
+  color: #eee;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  &-logo {
+    display: flex;
+    
+    justify-content: center;
+    // align-items: center;
+    width: 20vw;
+    // align-self: flex-start;
+
+  }
+  .tmdb-copyright {
+    font-size: 12px;
+  }
+
+  img {
+    width: 50px;
+    height: auto;
+    margin-right: 1rem;;
+
+  }
+
+  
+}

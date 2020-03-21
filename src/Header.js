@@ -17,7 +17,7 @@ class Header extends Component {
     
   }
   onChangeSelect(event) {
-    this.setState({selected: event.target.value});
+    this.setState({selected: event.target.value});   
     this.props.handleSelect( event.target.value);
   }
 
@@ -54,7 +54,7 @@ class Header extends Component {
            type="submit"
            className="search__button"
            >
-           <img src={searchIcon} className="search__icon"/>
+           <img src={searchIcon} className="search__icon" alt=""/>
            {/* <svg className="search__icon">
               <use href="magnifying-glass"></use>
            </svg> */}
@@ -72,5 +72,7 @@ class Header extends Component {
   }
   
 }
+
+
 
 export default Header;

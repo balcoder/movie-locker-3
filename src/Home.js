@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import getPage from './helper';
 import * as apiCalls from './api';
 import './scss/MovieGallery.scss'
@@ -88,7 +88,7 @@ componentDidUpdate(prevProps) {
           <Link to={`/movie/${movie.id}`}>
           <img
             src={`${baseUrlW154}${movie.poster_path}`}
-            alt={`${movie.title} cover image`}
+            alt={`${movie.title} cover`}
             className="gallery-img"
             />
           <p className="gallery-caption">{movie.original_title}</p>
