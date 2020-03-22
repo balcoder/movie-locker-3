@@ -41,8 +41,6 @@ async loadGenresWithIds(id) {
   try {    
     let genreList =  await apiCalls.getGenres(id);     
     let currentView = getPage(this.props.currentPage, genreList); 
-    console.log('loadGenresWithIds', id, currentView);
-
     this.onUpdateView(currentView);
   } catch (err) {
     console.error(err);
@@ -51,8 +49,7 @@ async loadGenresWithIds(id) {
 
 componentDidUpdate(prevProps) {
   
-  if(this.props.params.id === undefined || this.props.params.id === prevProps.params.id) {
-    console.log('componentDidUpdate if undedfined')
+  if(this.props.params.id === undefined || this.props.params.id === prevProps.params.id) {   
     return;
   }
   //console.log('componentDidUpdate', this.props.params.id);
