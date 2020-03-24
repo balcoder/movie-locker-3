@@ -46,9 +46,9 @@ function Movie({ match, history}) {
   return (    
     <div className="movie-container" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }} >
       <div className="movei-container__background" style={{imageUrl}}></div>
-      <div class="movie-container__overlay"></div>
+      <div className="movie-container__overlay"></div>
       
-      <div class="movie-container__content">         
+      <div className="movie-container__content">         
           <h1>{movie.title}</h1>
           <p>{movie.overview}</p>                       
         

@@ -25,14 +25,13 @@ function Content( props ) {
              {...match}
              {...props}/>
           )}
-        />            
-       
-         <Route 
-          path="/movie/:id"
-          render={(routeProps) => (
-          <Movie {...routeProps} props />
-          )}
-        />           
+        />      
+      <Route path="/movie/:id" render={(routeProps) => (
+            <Movie 
+            {...routeProps}
+             props />
+      )}
+      />           
       </Switch>     
       </div>
   );

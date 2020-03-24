@@ -11,7 +11,7 @@ function Footer() {
         </div>
       </div>
      
-      <div class="copyright">
+      <div className="copyright">
         Created by Des Barrett &copy;2020. All Rights Reserved.
       </div>   
     </div>

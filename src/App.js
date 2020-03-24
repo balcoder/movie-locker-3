@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useHistory } from "react-router-dom";
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
@@ -53,8 +54,7 @@ class App extends Component {
     try {      
       let genreList =  await apiCalls.getGenres(id);
       let numPages = genreList.length;     
-      let currentView = getPage(this.state.currentPage, genreList); 
-      //console.log('loadGenresWithIds', id, currentView);
+      let currentView = getPage(this.state.currentPage, genreList);    
 
       this.setState({currentView, currentViewList: genreList, numPages})
     } catch (err) {
@@ -67,7 +67,8 @@ class App extends Component {
       let searchResults = await apiCalls.getSearch(phrase);
       let numPages = searchResults.length;
       let page1 = searchResults[0].results
-      
+      // let history = useHistory();
+      // history.push("/search");
       this.setState({
         currentViewList: searchResults,
         currentView: page1,
@@ -89,8 +90,7 @@ class App extends Component {
   }
 
   handleClickPage(e) {
-      let pageNum = e.target.id
-      console.log('span click::',e)        
+      let pageNum = e.target.id;            
       let nextView = getPage(pageNum, this.state.currentViewList);      
       this.setState({currentPage: pageNum, currentView: nextView});
     }
