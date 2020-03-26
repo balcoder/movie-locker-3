@@ -90,20 +90,16 @@ export async function getSelected(term) {
   let url = '';
   switch (term) {
     case 'Top Rated':
-      url = TOPRATEDURL;
-      console.log('getSelected:::TopRated',TOPRATEDURL) 
+      url = TOPRATEDURL;      
       break;
     case 'In Cinema Now':
-      url = INCINEMANOW;
-      console.log('getSelected:::Incinema',INCINEMANOW)
+      url = INCINEMANOW;     
       break;
     case 'Upcoming':
-      url = UPCOMING;
-      console.log('getSelected:::Upcoming',UPCOMING)
+      url = UPCOMING;      
       break;
     default:
-      url = TOPRATEDURL;
-      console.log('getSelected:::Default',TOPRATEDURL)
+      url = TOPRATEDURL;     
   }  
   let promises = []; 
   // Get the number of pages from the search term

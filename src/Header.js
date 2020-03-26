@@ -62,10 +62,10 @@ function Header(props) {
           </button>
       </form>
         <form className="select-form">         
-          <select className="select-view" value={selected} onChange={onChangeSelect}>            
+          <select className="select-view" defaultValue={selected} onChange={onChangeSelect}>            
             <option value="In Cinema Now">In Cinema Now</option>
             <option value="Top Rated">Top Rated</option>             
-            <option selected  value="Upcoming">Upcoming</option>
+            <option value="Upcoming">Upcoming</option>
           </select>         
       </form>
     </div>

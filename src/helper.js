@@ -3,7 +3,6 @@ export default function getPage(pageNum, arr) {
   if(arr.length === 0) {
     return;
   }  
-  let pageResult = arr.find(val => val.page === parseInt(pageNum, 10));
-  console.log('pageResults', pageNum, arr, pageResult);   
+  let pageResult = arr.find(val => val.page === parseInt(pageNum, 10)); 
   return pageResult.results;
 }

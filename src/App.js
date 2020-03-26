@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useHistory } from "react-router-dom";
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
@@ -22,7 +21,6 @@ class App extends Component {
     // initial state setup
     this.loadPopular();
     this.loadGenreIds();
-
     this.handleClickPage = this.handleClickPage.bind(this);
     this.handleUpdateView = this.handleUpdateView.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -43,7 +41,7 @@ class App extends Component {
   async loadGenreIds() {
     try {
       let genreIds = await apiCalls.getGenre();
-      this.setState({ genreIds: genreIds.genres });
+      this.setState({ genreIds: genreIds.genres});
     } catch (err) {
       console.error(err);
     }
@@ -66,9 +64,8 @@ class App extends Component {
     try {
       let searchResults = await apiCalls.getSearch(phrase);
       let numPages = searchResults.length;
-      let page1 = searchResults[0].results
-      // let history = useHistory();
-      // history.push("/search");
+      let page1 = searchResults[0].results;
+     
       this.setState({
         currentViewList: searchResults,
         currentView: page1,

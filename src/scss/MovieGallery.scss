@@ -54,7 +54,7 @@
 
 	& li {
 		border: 2px solid rgb(216, 212, 212);
-		background-color: goldenrod;		
+		// background-color: goldenrod;		
 		width: 40px;
   	height: 40px;
 		padding: 0;
@@ -63,19 +63,27 @@
 		box-shadow: 0 3px 6px rgba(218, 165, 32, .16), 0 3px 6px rgba(218, 165, 32, .23);		
 		&:hover {
 			cursor: pointer;
-			background-color: rgb(189, 143, 27);
+			// background-color: rgb(189, 143, 27);
+			background-color: goldenrod;	
 		}
 
 		& span {
 			position: relative;
 			top: 9px;			
-		}
+		}		
 	}
 }
 // prevent clicking on the span number element 
 .li-page-num > * {
  pointer-events: none;
+ 
 }
+
+.pageLinks .li-page-num__active {
+	// border: 2px solid rgb(198, 207, 73);
+	background-color: goldenrod;
+}
+
 
 // Responsive Styles
 @media screen and (min-width: 769px) {

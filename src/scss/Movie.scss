@@ -8,6 +8,7 @@ The container box is relative so we can position stuff inside of it
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 
@@ -29,6 +30,7 @@ We set the image url via a CSS custom property, that's set via the style attribu
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  overflow: hidden;
   background-image: var(--image-url);
   
   animation: animatedBackground 30s linear infinite;
@@ -59,7 +61,7 @@ The content div is at the top z-index 3.*/
   z-index: 3;
   
   color: white;
-  background-color:rgba(51,50,50,0.8);
+  background-color:rgba(51,50,50,0.5);
   height: 60vh;
   width: 60vw;
   padding: 2rem;
@@ -68,6 +70,26 @@ The content div is at the top z-index 3.*/
   align-items: center;
   justify-content: space-between; 
 }
+.btn {
+    background-color: goldenrod;
+    color: #fff;
+    border: none;
+    border-radius: 0;  
+    font-size: .8rem;
+    text-transform: uppercase;
+    padding: .5rem .75rem;
+    cursor: pointer;
+    opacity: none;
+    transition: all .2s;
+    margin: 0 10px;
+    &:hover {
+      background-color: rgb(158, 120, 25);
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }  
 
 @keyframes animatedBackground {
   0% {
