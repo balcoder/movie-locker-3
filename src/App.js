@@ -21,16 +21,19 @@ class App extends Component {
     // initial state setup
     this.loadPopular();
     this.loadGenreIds();
+    // bind or handlers
     this.handleClickPage = this.handleClickPage.bind(this);
     this.handleUpdateView = this.handleUpdateView.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    
 
   }
+  // Get initial view of popular movies
   async loadPopular() {
-    try {
+    try {     
       let currentViewList =  await apiCalls.getPopular();
-      let numPages = currentViewList.length;
+      let numPages = currentViewList.length;           
       let currentView= getPage(this.state.currentPage, currentViewList);           
       this.setState({ currentView, currentViewList , numPages});
     } catch (err) {
@@ -49,12 +52,12 @@ class App extends Component {
   
     // get a list of movies with a genre id
   async loadGenresWithIds(id) {
-    try {      
+    try {       
       let genreList =  await apiCalls.getGenres(id);
-      let numPages = genreList.length;     
-      let currentView = getPage(this.state.currentPage, genreList);    
-
-      this.setState({currentView, currentViewList: genreList, numPages})
+      let numPages = genreList.length;
+      let currentPage = 1;      
+      let currentView = getPage(currentPage, genreList);
+      this.setState({currentView, currentViewList: genreList, numPages, currentPage })
     } catch (err) {
       console.error(err);
     }
@@ -64,8 +67,7 @@ class App extends Component {
     try {
       let searchResults = await apiCalls.getSearch(phrase);
       let numPages = searchResults.length;
-      let page1 = searchResults[0].results;
-     
+      let page1 = searchResults[0].results;     
       this.setState({
         currentViewList: searchResults,
         currentView: page1,
@@ -104,7 +106,6 @@ class App extends Component {
     handleSelect(term) {
       this.loadSelected(term);
     }
-
   
 
   componentDidMount()  {
@@ -117,6 +118,7 @@ class App extends Component {
        <Header
        handleSearch={this.handleSearch}
        handleSelect={this.handleSelect}
+       handleReload={this.loadPopular}
        />
        <Content       
         popular={this.state.currentViewList}

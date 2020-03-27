@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import './scss/Header.scss';
 import searchIcon from './magnifying-glass.svg';
 
@@ -8,6 +8,8 @@ function Header(props) {
   const [selected, setSelected] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [toHome, setToHome] = useState(false);
+
+  const history = useHistory();
     
   
   function onChangeSelect(event) {
@@ -32,16 +34,14 @@ function Header(props) {
       setToHome(false);
     };
   });
-  // Redirect ot Home component if movie search or selected drop down is performed  
+  // Redirect to Home component if movie search or selected drop down is performed  
   if(toHome) {
     return <Redirect to='/' />
   }
  
   return (
     <div className="header">
-      <div className="logo"><a href="/">Movie<span>Locker</span></a>
-        
-      </div>
+      <div className="logo"><a href="/">Movie<span>Locker</span></a></div>      
       <form
         onSubmit={handleSubmit}
         className="search">
