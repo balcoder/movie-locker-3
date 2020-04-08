@@ -4,7 +4,7 @@ import Content from './Content';
 import Footer from './Footer';
 import getPage from './helper';
 import * as apiCalls from './api';
-import './App.css';
+import './scss/App.scss';
 
 
 class App extends Component {
@@ -77,10 +77,10 @@ class App extends Component {
     }
   }
 
-  async loadSelected(term) {
+  async loadSelected(term) {    
     let selectedResults  = await apiCalls.getSelected(term);    
     let numPages = selectedResults.length;
-    let page1 = selectedResults[0].results;
+    let page1 = selectedResults[0].results;    
     this.setState({
       currentViewList: selectedResults,
       currentView: page1,
@@ -105,6 +105,7 @@ class App extends Component {
 
     handleSelect(term) {
       this.loadSelected(term);
+      this.setState({currentPage: 1});
     }
   
 

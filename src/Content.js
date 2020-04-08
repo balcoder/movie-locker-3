@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch,  Route } from "react-router-dom";
-import './scss/Content.scss';
+//import './scss/Content.scss';
 import GenreList from './GenreList';
 import Home from './Home';
 import Movie from './Movie';

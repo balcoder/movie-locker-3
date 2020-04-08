@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {Fade, Zoom } from 'react-reveal';
 import getPage from './helper';
 import * as apiCalls from './api';
-import './scss/MovieGallery.scss'
+// import './scss/MovieGallery.scss'
 
 const baseUrlW154 = "http://image.tmdb.org/t/p/w154/";
 
@@ -11,11 +12,8 @@ class Home extends Component {
    super(props);
    this.state = {
      popular: [],
-     currentView: []
-    
-     
-   }
-  
+     currentView: []     
+   }  
    this.onClickPage = this.onClickPage.bind(this);  
  }
 
@@ -23,36 +21,12 @@ class Home extends Component {
   let pageNum = e.target.id;  
   let nextView = getPage(pageNum, this.props.popular);  
   return nextView;
-} 
+}
 
-//  // initial state setup
-//  async loadPopularCurrent() {
-//   try {    
-//     let popular =  await apiCalls.getPopular(this.state.numPages);    
-//     let currentView= getPage(this.props.currentPage, popular);        
-//     this.setState({ popular, currentView });
-//   } catch (err) {
-//     console.error(err);
-//   }
-// }
-
-// // get a list of movies with a genre id
-// async loadGenresWithIds(id) {
-//   try {    
-//     let genreList =  await apiCalls.getGenres(id);     
-//     let currentView = getPage(this.props.currentPage, genreList); 
-//     this.onUpdateView(currentView);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// }
-
-componentDidUpdate(prevProps) {
-  
+componentDidUpdate(prevProps) {  
   if(this.props.params.id === undefined || this.props.params.id === prevProps.params.id) {   
     return;
-  }
-  
+  }  
  this.props.handleUpdateView(this.props.params.id)
 }
   
@@ -95,7 +69,8 @@ componentDidUpdate(prevProps) {
       );
     }); 
     return (
-      <div className="movie-gallery">
+      <Zoom >
+        <div className="movie-gallery">
         <ul className="pageLinks">
             {pageNumbers}
           </ul>
@@ -104,6 +79,8 @@ componentDidUpdate(prevProps) {
           </ul> 
           
       </div>
+      </Zoom>
+      
     );
   }
   

@@ -1,9 +1,13 @@
+// $bp-medium: 56.25em;  // 900/16
+
 .movie-gallery {
-  width: 85vw;
-  display: flex;  
+	// width: 85vw;
+	width: 100vw;
+	display: flex;
+	padding-top: 1rem;  
   flex-direction: column;
   align-items: center;  
-  color: white; 
+  color: var(--color-grey-light-3);
 
 }
 
@@ -11,65 +15,64 @@
   // remove list styles
   margin: 0;
   padding: 0;
-  list-style: none;
-
+	list-style: none;
+	
   width: 100%;
   height: auto;
-
   display: flex;
-  flex-direction: column;  
+	flex-flow: row wrap;
+	justify-content: space-evenly;  
 }
 
 .gallery-item:not(:last-of-type) {
-
-	margin-bottom: 40px;
-
+	margin-bottom: 4rem;
 }
 
 .gallery-img {
-	width:184px;
-	height: 278px;
+	width:18.4rem;
+	height: 27.8rem;
 }
 
-.gallery-caption {	
+.gallery-caption {
+	width:18.4rem;
+	margin: 0;
+	padding: .8rem;
+	font-size: 1.4rem;
+	background: var(--color-primary-dark);
+	color: var(--color-grey-light-3);
+	border-radius: 5%;	
 	white-space: nowrap;
   overflow: hidden;
 	text-overflow: ellipsis;	
-	width:154px;
-	margin: 0;
-	padding: 8px;
-	background: #263f44;
-	color: #f2f2f2;
-	border-radius: 5%;
+
+	
 }
 
 .pageLinks {
 	width: 60%;
+	margin-bottom: 1.5rem;
 	list-style-type: none;
 	display: flex;
-	// flex-direction: row;
 	flex-flow: row wrap;
 	justify-content: space-evenly;
 	position: relative;
 
 	& li {
-		border: 2px solid rgb(216, 212, 212);
+		border: 2px solid var(--color-grey-light-4);
 		// background-color: goldenrod;		
-		width: 40px;
-  	height: 40px;
+		width: 4rem;
+  	height: 4rem;
 		padding: 0;
-		top: 10px;
+		top: 1rem;
 		border-radius: 50%;
-		box-shadow: 0 3px 6px rgba(218, 165, 32, .16), 0 3px 6px rgba(218, 165, 32, .23);		
+		box-shadow: var(--shadow-dark);		
 		&:hover {
-			cursor: pointer;
-			// background-color: rgb(189, 143, 27);
-			background-color: goldenrod;	
+			cursor: pointer;			
+			background-color: var(--color-tertiary);	
 		}
-
 		& span {
 			position: relative;
-			top: 9px;			
+			top: .9rem;			
 		}		
 	}
 }
@@ -80,17 +83,17 @@
 }
 
 .pageLinks .li-page-num__active {
-	// border: 2px solid rgb(198, 207, 73);
-	background-color: goldenrod;
+	background-color:  var(--color-tertiary);
 }
 
-
 // Responsive Styles
-@media screen and (min-width: 769px) {
+
+
+@media screen and (min-width: $bp-medium-small) {
 	
-	.gallery-wrapper {
-		max-width: 1240px;
-	}
+	// .gallery-wrapper {
+	// 	max-width: 1240px;
+	// }
 	
 	.gallery {
 
@@ -117,6 +120,12 @@
 	.gallery-caption {
 		max-width: 350px;
 		min-width: 185px;
+	}	
+}
+
+@media screen and(max-width:  $bp-medium) {
+	.pageLinks {
+		width: 90%;
 	}
-	
+
 }

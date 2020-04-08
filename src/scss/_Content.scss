@@ -1,0 +1,15 @@
+.content {
+  min-height:80vh;
+  width: 100vw; 
+  background-color: var(--color-primary);
+  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary));
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  
+  @media screen and (min-width: $bp-medium-small) {
+    flex-direction: row;
+  }
+}
+

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import {Fade, Zoom } from 'react-reveal';
 import { KEY } from './movie-locker.config';
-import './scss/Movie.scss';
+// import './scss/Movie.scss';
 
 
 const BASEURL = "https://api.themoviedb.org/3/movie/";
@@ -29,9 +30,7 @@ function Movie({ match, history}) {
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     getMovie(movieId);
-  });
-
-  
+  });  
 
   const getMovie = async (id) => { 
     if(gotMovie) {
@@ -52,84 +51,42 @@ function Movie({ match, history}) {
     setGotMovie(true);
 
   }
-  return (
-    <div className="movie-container"  >  
-    {/* <div className="movie-container" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }} >    */}
-     {/* <div className="movie-container"  > */}
-     <div className="movie-container__background" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}></div>
-      {/* <div className="movei-container__background" style={{imageUrl}}></div> */}
-      <div className="movie-container__overlay"></div>
-      
-      <div className="movie-container__content">         
-          <h1>{movie.title}</h1>
-          <p>{movie.overview}</p>                       
-        
-        <div className="movie-mid-section">
-          <img className="movie-img" src={ `${IMGURL}w342${movie.poster_path}`} alt="movie poster" />
-          <div className="movie-stats">
-            <div>{`Rating: ${movie.vote_average}`}</div>
-            <div>{`Runtime: ${movie.runtime}`}</div>
-            <div>{`Budget: $${formatMoney(movie.budget)}`}</div>
+    return (    
+      <div className="movie-container"  >    
+      <div className="movie-container__background" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}></div>      
+        <div className="movie-container__overlay"></div>      
+        <div className="movie-container__content">         
+            <h1>{movie.title}</h1>
+            <p>{movie.overview}</p>                       
+          
+          <div className="movie-mid-section">
+            <img className="movie-img" src={ `${IMGURL}w342${movie.poster_path}`} alt="movie poster" />
+            <div className="movie-stats">
+              <div>{`Rating: ${movie.vote_average}`}</div>
+              <div>{`Runtime: ${movie.runtime}`}</div>
+              <div>{`Budget: $${formatMoney(movie.budget)}`}</div>
+            </div>
           </div>
-        </div>
-        
-        <div className="movie-buttons">
-            <button
-              className="btn"
-              onClick={history.goBack}
-              >
-            Go Back
-            </button>
-            {movieUrl && <button className="btn">
-            <a href={movieUrl} target="_blank"  rel="noopener noreferrer">Trailer</a>
-            </button> }
-                     
-          </div>
-        
-        
-        
-      </div>       
-    </div>
-  
-);
-
-  // return (    
-  //     <div className="movie-container" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }} >
-  //       <div className="movie-overlay" ></div>
-  //       {/* <div className="movie-overlay" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}></div> */}
-  //       <div className="movie-content">          
-  //         <div className="movie-info">
-  //           <h1>{movie.title}</h1>
-  //           <p>{movie.overview}</p>                       
-  //         </div>
-  //         <div className="movie-mid-section">
-  //           <img className="movie-img" src={ `${IMGURL}w342${movie.poster_path}`} />
-  //           <div className="movie-stats">
-  //             <div>{`Rating: ${movie.vote_average}`}</div>
-  //             <div>{`Runtime: ${movie.runtime}`}</div>
-  //             <div>{`Budget: $${formatMoney(movie.budget)}`}</div>
-  //           </div>
-  //         </div>
           
-  //         <div className="movie-buttons">
-  //             <button
-  //               className="btn"
-  //               onClick={history.goBack}
-  //               >
-  //             Go Back
-  //             </button>
-  //             {movieUrl && <button className="btn">
-  //             <a href={movieUrl} target="_blank">Trailer</a>
-  //             </button> }
-                       
-  //           </div>
+          <div className="movie-buttons">
+              <button
+                className="btn"
+                onClick={history.goBack}
+                >
+              Go Back
+              </button>
+              {movieUrl && <button className="btn">
+              <a href={movieUrl} target="_blank"  rel="noopener noreferrer">Trailer</a>
+              </button> }
+                      
+            </div>
           
           
           
-  //       </div>       
-  //     </div>
+        </div>       
+      </div>   
     
-  // );
+  ); 
 }
 
 function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
@@ -147,9 +104,5 @@ function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
     console.log(e)
   }
 };
-
-
-
-
 
 export default Movie;

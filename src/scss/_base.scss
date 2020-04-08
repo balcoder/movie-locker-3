@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 300;
+  src: local('Roboto'), url(../fonts/Roboto-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  src: local('Roboto'), url(../fonts/Roboto-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 500;
+    src: local('Roboto'), url(../fonts/Roboto-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 700;
+  src: local('Roboto'), url(../fonts/Roboto-Bold.ttf) format('truetype');
+}
+
+// set up our variables
+:root {
+  --color-primary:  #015668;
+  --color-primary-light: #02738a;
+  --color-primary-dark: #263f44;
+  --color-secondary: #464b3c;
+  --color-tertiary: #daa520;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0,.3);
+  --shadow-small-dark: 0 1rem 3rem rgba(0, 0, 0,.3);
+  --shadow-light: 0 2rem 5rem rgba(0,0,0,.06); 
+
+}
+
+$bp-largest: 75em;  // 1200/16 = 75
+$bp-large: 68.75em;    // 1100/16
+$bp-medium: 56.25em;  // 900/16
+$bp-medium-small: 43.75em;  // 700/16
+$bp-small: 37.5em;  // 600/16
+$bp-smallest: 31.25em;  // 500/16
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import './scss/GenreList.scss';
+//import './scss/GenreList.scss';
 
 
 

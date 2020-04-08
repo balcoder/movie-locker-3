@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
-import './scss/Header.scss';
+// import './scss/Header.scss';
 import searchIcon from './magnifying-glass.svg';
 
 function Header(props) {
