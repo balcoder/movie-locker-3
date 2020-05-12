@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {Fade, Zoom } from 'react-reveal';
-import { KEY } from './movie-locker.config';
+//import {Fade, Zoom } from 'react-reveal';
+import { KEY } from '../movie-locker.config';
 // import './scss/Movie.scss';
 
 

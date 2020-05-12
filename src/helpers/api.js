@@ -1,4 +1,4 @@
-import { KEY } from './movie-locker.config';
+import { KEY } from '../movie-locker.config';
 const APIURL = 'https://api.themoviedb.org/3/';
 const GENRESURL = `${APIURL}genre/movie/list?api_key=${KEY}&language=en-US&include_adult=false&page=1`;
 const GENREURL = `${APIURL}discover/movie?api_key=${KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=`;
@@ -21,6 +21,7 @@ function handleError(res) {
     } else {
       // 500 (Internal Server Error) 501 (Not Implemented)
       let err = { errorMessage: 'Please try later: Server problem' }
+      throw err;
     }
   }  
   return res.json();

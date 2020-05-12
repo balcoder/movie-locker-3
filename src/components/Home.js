@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Fade, Zoom } from 'react-reveal';
-import getPage from './helper';
-import * as apiCalls from './api';
+//import {Fade, Zoom } from 'react-reveal';
+import {Zoom } from 'react-reveal';
+import getPage from '../helpers/helper';
+//import * as apiCalls from '../helpers/api';
 // import './scss/MovieGallery.scss'
 
 const baseUrlW154 = "http://image.tmdb.org/t/p/w154/";
@@ -37,7 +38,7 @@ componentDidUpdate(prevProps) {
       pageNumbers.push(
         <li
         // className="li-page-num"
-        className={this.props.currentPage == i ? 'li-page-num__active' : 'li-page-num'}
+        className={this.props.currentPage === i ? 'li-page-num__active' : 'li-page-num'}
         key={`${i}-${this.props.currentPage}`}
         id={i}
         onClick={this.props.handleClickPage}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import getPage from './helper';
-import * as apiCalls from './api';
+import getPage from '../helpers/helper';
+import * as apiCalls from '../helpers/api';
 // import './scss/MovieGallery.scss'
 
 const baseUrlW154 = "http://image.tmdb.org/t/p/w154/";

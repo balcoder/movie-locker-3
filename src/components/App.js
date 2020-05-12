@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
-import getPage from './helper';
-import * as apiCalls from './api';
-import './scss/App.scss';
+import getPage from '../helpers/helper';
+import * as apiCalls from '../helpers/api';
+import '../scss/App.scss';
 
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
     // initial state setup
     this.loadPopular();
     this.loadGenreIds();
-    // bind or handlers
+    // bind handlers
     this.handleClickPage = this.handleClickPage.bind(this);
     this.handleUpdateView = this.handleUpdateView.bind(this);
     this.handleSearch = this.handleSearch.bind(this);

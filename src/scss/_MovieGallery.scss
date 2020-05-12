@@ -2,7 +2,7 @@
 
 .movie-gallery {
 	// width: 85vw;
-	width: 100vw;
+	width: 100%;
 	display: flex;
 	padding-top: 1rem;  
   flex-direction: column;
@@ -21,7 +21,10 @@
   height: auto;
   display: flex;
 	flex-flow: row wrap;
-	justify-content: space-evenly;  
+	justify-content: space-evenly; 
+	& a {
+		text-decoration: none;
+	} 
 }
 
 .gallery-item:not(:last-of-type) {
@@ -44,7 +47,7 @@
 	white-space: nowrap;
   overflow: hidden;
 	text-overflow: ellipsis;	
-
+	
 	
 }
 
@@ -58,10 +61,9 @@
 	position: relative;
 
 	& li {
-		border: 2px solid var(--color-grey-light-4);
-		// background-color: goldenrod;		
+		border: 2px solid var(--color-grey-light-4);				
 		width: 4rem;
-  	height: 4rem;
+  		height: 4rem;
 		padding: 0;
 		top: 1rem;
 		border-radius: 50%;
@@ -89,6 +91,64 @@
 // Responsive Styles
 
 
+
+@media screen and(max-width: $bp-smallest) {
+	.pageLinks {
+		width: 100%;
+		margin-bottom: 1.5rem;
+		list-style-type: none;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-evenly;
+		position: relative;
+	
+		& li {
+			border: 2px solid var(--color-grey-light-4);				
+			width: 3rem;
+			height: 3rem;
+			padding: 0;
+			top: 1rem;
+			border-radius: 50%;
+			box-shadow: var(--shadow-dark);		
+			&:hover {
+				cursor: pointer;			
+				background-color: var(--color-tertiary);	
+			}
+			& span {
+				position: relative;
+				top: .5rem;			
+			}		
+		}
+	}
+}
+@media screen and(max-width: $bp-mobile) {
+	.gallery-img {
+		width: 40vw;
+		height: auto;
+	}
+	.gallery-caption {
+		width: 40vw;
+	}
+	.pageLinks {
+		& li {
+			width: 2.5rem;
+			height: 2.5rem;	
+		}
+		& .span-page-num {
+			position: relative;
+			top: .3rem;			
+		}		
+	}
+}
+
+@media screen and(max-width:  $bp-medium) {
+	.pageLinks {
+		width: 90%;
+	}
+
+}
+
+
 @media screen and (min-width: $bp-medium-small) {
 	
 	// .gallery-wrapper {
@@ -101,21 +161,24 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
+		 	
 
 	}
 	
 	.gallery-item {
-		padding: 20px;
+		padding: 20px;	
 		
-		& a {
-			text-decoration: none;
-		}
 	}
-	
+
+	// .gallery-item  a, a:link, a:visited {
+	// 	text-decoration: none;
+	// 	color: pink;
+	// }
+  
 	.gallery-img {
 		min-width: 185px;
-    max-width: 350px;
-    border-radius: 5px;
+		max-width: 350px;
+		border-radius: 5px;
 	}
 	.gallery-caption {
 		max-width: 350px;
@@ -123,9 +186,4 @@
 	}	
 }
 
-@media screen and(max-width:  $bp-medium) {
-	.pageLinks {
-		width: 90%;
-	}
 
-}

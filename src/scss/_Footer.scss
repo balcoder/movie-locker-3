@@ -32,3 +32,17 @@
 
   
 }
+
+@media screen and (max-width: $bp-medium-small) {
+  .footer {
+    flex-direction: column;
+
+    img {
+      width: 25px;
+    }
+    .tmdb-copyright {
+      display: none;
+    }
+  }
+  
+}
