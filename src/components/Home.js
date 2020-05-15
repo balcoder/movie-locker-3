@@ -15,30 +15,31 @@ class Home extends Component {
      popular: [],
      currentView: []     
    }  
-   this.onClickPage = this.onClickPage.bind(this);  
+   //this.onClickPage = this.onClickPage.bind(this);  
  }
 
- onClickPage(e) {
-  let pageNum = e.target.id;  
-  let nextView = getPage(pageNum, this.props.popular);  
-  return nextView;
-}
+//  onClickPage(e) {  
+//   let pageNum = e.target.id;  
+//   let nextView = getPage(pageNum, this.props.popular);  
+//   return nextView;
+// }
 
 componentDidUpdate(prevProps) {  
   if(this.props.params.id === undefined || this.props.params.id === prevProps.params.id) {   
     return;
   }  
- this.props.handleUpdateView(this.props.params.id)
+ this.props.handleUpdateView(this.props.params.id); 
 }
   
 
   renderPagelinks() {
+    console.log(`rednerPageLinks:${this.props.currentPage}`);
     let pageNumbers = [];
-    for(let i = 1; i <= this.props.numPages; i++) {      
+    for(let i = 1; i <= this.props.numPages; i++) {         
       pageNumbers.push(
         <li
         // className="li-page-num"
-        className={this.props.currentPage === i ? 'li-page-num__active' : 'li-page-num'}
+        className={parseInt(this.props.currentPage) === i ? 'li-page-num__active' : 'li-page-num'}
         key={`${i}-${this.props.currentPage}`}
         id={i}
         onClick={this.props.handleClickPage}
