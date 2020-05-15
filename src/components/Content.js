@@ -1,13 +1,10 @@
 import React from 'react';
 import { Switch,  Route } from "react-router-dom";
-//import './scss/Content.scss';
 import GenreList from './GenreList';
 import Home from './Home';
 import Movie from './Movie';
 
-
-function Content( props ) { 
-
+function Content( props ) {
   return (
     <div className="content">   
       <GenreList
@@ -36,7 +33,5 @@ function Content( props ) {
       </div>
   );
 }
-
-
 
 export default Content;

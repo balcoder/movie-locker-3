@@ -34,7 +34,7 @@ componentDidUpdate(prevProps) {
 
   renderPagelinks() {
     let pageNumbers = [];
-    for(let i = 1; i <= this.props.numPages; i++) {
+    for(let i = 1; i <= this.props.numPages; i++) {      
       pageNumbers.push(
         <li
         // className="li-page-num"

@@ -79,6 +79,7 @@ class MovieGallery extends Component {
           <img
             src={`${baseUrlW154}${movie.poster_path}`}
             className="gallery-img"
+            alt="poster"
             />
           <p className="gallery-caption">{movie.original_title}</p>
           </Link>        
