@@ -31,10 +31,11 @@ class App extends Component {
   }
   // Get initial view of popular movies
   async loadPopular() {
-    try {     
-      let currentViewList =  await apiCalls.getPopular();
+    try {
+      //getPopular returns Promise.all with each page of 20 movies     
+      let currentViewList =  await apiCalls.getPopular(); 
       let numPages = currentViewList.length;           
-      let currentView= getPage(this.state.currentPage, currentViewList);           
+      let currentView = getPage(this.state.currentPage, currentViewList);           
       this.setState({ currentView, currentViewList , numPages});
     } catch (err) {
       console.error(err);

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-//import {Fade, Zoom } from 'react-reveal';
 import {Zoom } from 'react-reveal';
-import getPage from '../helpers/helper';
-//import * as apiCalls from '../helpers/api';
-// import './scss/MovieGallery.scss'
+//import getPage from '../helpers/helper';
 
 const baseUrlW154 = "http://image.tmdb.org/t/p/w154/";
 
@@ -14,32 +11,22 @@ class Home extends Component {
    this.state = {
      popular: [],
      currentView: []     
-   }  
-   //this.onClickPage = this.onClickPage.bind(this);  
+   }   
  }
 
-//  onClickPage(e) {  
-//   let pageNum = e.target.id;  
-//   let nextView = getPage(pageNum, this.props.popular);  
-//   return nextView;
-// }
+  componentDidUpdate(prevProps) {  
+    if(this.props.params.id === undefined || this.props.params.id === prevProps.params.id) {   
+      return;
+    }  
+  this.props.handleUpdateView(this.props.params.id); 
+  }
 
-componentDidUpdate(prevProps) {  
-  if(this.props.params.id === undefined || this.props.params.id === prevProps.params.id) {   
-    return;
-  }  
- this.props.handleUpdateView(this.props.params.id); 
-}
-  
-
-  renderPagelinks() {
-    console.log(`rednerPageLinks:${this.props.currentPage}`);
+  renderPagelinks() {   
     let pageNumbers = [];
     for(let i = 1; i <= this.props.numPages; i++) {         
       pageNumbers.push(
-        <li
-        // className="li-page-num"
-        className={parseInt(this.props.currentPage) === i ? 'li-page-num__active' : 'li-page-num'}
+        <li        
+        className={parseInt(this.props.currentPage) === i ? 'li-page-num li-page-num__active' : 'li-page-num'}
         key={`${i}-${this.props.currentPage}`}
         id={i}
         onClick={this.props.handleClickPage}
@@ -73,19 +60,16 @@ componentDidUpdate(prevProps) {
     return (
       <Zoom >
         <div className="movie-gallery">
-        <ul className="pageLinks">
+          <ul className="pageLinks">
             {pageNumbers}
           </ul>
           <ul className="gallery">
-          {movies}
-          </ul> 
-          
+            {movies}
+          </ul>          
       </div>
-      </Zoom>
-      
+      </Zoom>      
     );
-  }
-  
+  }  
 }
 
 export default Home;

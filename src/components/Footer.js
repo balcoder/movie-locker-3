@@ -1,5 +1,7 @@
 import React from 'react';
 
+let thisYear = new Date().getFullYear();
+
 function Footer() {
   return (
     <div className="footer">
@@ -11,7 +13,7 @@ function Footer() {
       </div>
      
       <div className="copyright">
-        Created by Des Barrett &copy;2020. All Rights Reserved.
+      Created by Des Barrett &copy; {thisYear}. All Rights Reserved.
       </div>   
     </div>
   );

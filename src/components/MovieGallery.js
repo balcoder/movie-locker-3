@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import getPage from '../helpers/helper';
 import * as apiCalls from '../helpers/api';
-// import './scss/MovieGallery.scss'
 
 const baseUrlW154 = "http://image.tmdb.org/t/p/w154/";
 
-class MovieGallery extends Component {
-  
+class MovieGallery extends Component {  
   constructor(props) {
   super(props); 
   this.state = {    

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function GenreList({ genreIds }) {       
   let links = genreIds.map((val, index) => {
@@ -43,29 +43,4 @@ function GenreList({ genreIds }) {
   );
 
 }
-
-// function GenreList({ genreIds }) {       
-//     let links = genreIds.map((val, index) => (
-//     <li
-//      key={val.id}
-//      data-id={val.id}
-//      >
-//     <Link 
-//     to={`/genre/${val.id}`}    
-//     className="genre-link"    
-//     data-genre-id={val.id}    
-//     >
-//     {val.name}
-//     </Link> 
-//     </li>
-//     ))
-//     return (
-//       <div className="genre-list">        
-//         <ul>{links}</ul>             
-//       </div>
-//     );
-
-// }
-
-
 export default GenreList;

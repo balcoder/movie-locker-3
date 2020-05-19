@@ -48,7 +48,6 @@ export async function getGenres(id) {
   return Promise.all(promises);
 }
 
-
 // Get a number of pages of popular movies
 export async function getPopular() {
   let promises = [];
@@ -64,7 +63,6 @@ export async function getPopular() {
   }
   return Promise.all(promises);  
 }
-
 
 // Get a  list of movies based on search term
 export async function getSearch(phrase) {

@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
-//import { Redirect, useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-// import './scss/Header.scss';
 import searchIcon from '../magnifying-glass.svg';
 
 function Header(props) {
-
+  //using array destructuring to give different names to state variables
   const [selected, setSelected] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const [toHome, setToHome] = useState(false);
-
-  //const history = useHistory();
-    
+  const [toHome, setToHome] = useState(false); 
   
   function onChangeSelect(event) {
     setSelected(event.target.value);   
@@ -27,14 +22,16 @@ function Header(props) {
 
   function onSearch(event) {
     event.preventDefault();
-    setSearchTerm(event.target.value);   
-    
+    setSearchTerm(event.target.value);    
   }
+
+  //useEffect serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes
   useEffect(() => {    
     return () => {      
       setToHome(false);
     };
   });
+  
   // Redirect to Home component if movie search or selected drop down is performed  
   if(toHome) {
     return <Redirect to='/' />
@@ -56,10 +53,7 @@ function Header(props) {
           type="submit"
           className="search__button"
           >
-          <img src={searchIcon} className="search__icon" alt=""/>
-          {/* <svg className="search__icon">
-            <use href="magnifying-glass"></use>
-          </svg> */}
+          <img src={searchIcon} className="search__icon" alt=""/>          
           </button>
       </form>
         <form className="select-form">         
@@ -72,10 +66,6 @@ function Header(props) {
     </div>
   );
 }
-  
-
-
-
 
 export default Header;
 

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-//import {Fade, Zoom } from 'react-reveal';
 import { KEY } from '../movie-locker.config';
-// import './scss/Movie.scss';
-
 
 const BASEURL = "https://api.themoviedb.org/3/movie/";
 const ENDURL = `?api_key=${KEY}&language=en-US`;
@@ -28,7 +25,7 @@ function Movie({ match, history}) {
   const [gotMovie, setGotMovie ] = useState(false);
 
   // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
+  useEffect(() => {    
     getMovie(movieId);
   });  
 
@@ -37,8 +34,8 @@ function Movie({ match, history}) {
       return;
     }   
     let movie = await fetch(`${BASEURL}${id}${ENDURL}&append_to_response=videos`).then(res => res.json());
-    let imageUrl = `--image-url: url(&quot;${IMGURL}w1280${movie.backdrop_path};)`
-    let imgaeUrl2 = `${IMGURL}w1280${movie.backdrop_path}` 
+    //let imageUrl = `--image-url: url(&quot;${IMGURL}w1280${movie.backdrop_path};)`
+    //let imgaeUrl2 = `${IMGURL}w1280${movie.backdrop_path}` 
     
     if(movie.videos.results.length < 1) {
       setMovieUrl(''); 
@@ -51,9 +48,11 @@ function Movie({ match, history}) {
     setGotMovie(true);
 
   }
+ 
     return (    
       <div className="movie-container"  >    
-      <div className="movie-container__background" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}></div>      
+      {/* <div className="movie-container__background" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}></div>       */}
+      <div className="movie-container__background" style={movie.backdrop_path ? {backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` } : {backgoundColor: 'white'}}></div>
         <div className="movie-container__overlay"></div>      
         <div className="movie-container__content">         
             <h1>{movie.title}</h1>
