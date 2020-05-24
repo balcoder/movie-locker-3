@@ -92,7 +92,7 @@ class App extends Component {
   handleClickPage(e) {
       let pageNum = e.target.id;            
       let nextView = getPage(pageNum, this.state.currentViewList);      
-      this.setState({currentPage: pageNum, currentView: nextView});      
+      this.setState({currentPage: parseInt(pageNum, 10), currentView: nextView});      
     }
     
     handleUpdateView(id) {

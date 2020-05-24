@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {Zoom } from 'react-reveal';
-//import getPage from '../helpers/helper';
 
 const baseUrlW154 = "http://image.tmdb.org/t/p/w154/";
 
@@ -18,7 +17,7 @@ class Home extends Component {
     if(this.props.params.id === undefined || this.props.params.id === prevProps.params.id) {   
       return;
     }  
-  this.props.handleUpdateView(this.props.params.id); 
+    this.props.handleUpdateView(this.props.params.id); 
   }
 
   renderPagelinks() {   

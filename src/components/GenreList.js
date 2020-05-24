@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 function GenreList({ genreIds }) {       
   let links = genreIds.map((val, index) => {
@@ -42,5 +43,9 @@ function GenreList({ genreIds }) {
     </div>
   );
 
+}
+
+GenreList.propTypes = {
+  genreIds: PropTypes.arrayOf(PropTypes.object)
 }
 export default GenreList;

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { KEY } from '../movie-locker.config';
+import { formatMoney } from '../helpers/helper';
+
 
 const BASEURL = "https://api.themoviedb.org/3/movie/";
 const ENDURL = `?api_key=${KEY}&language=en-US`;
@@ -50,16 +52,15 @@ function Movie({ match, history}) {
   }
  
     return (    
-      <div className="movie-container"  >    
-      {/* <div className="movie-container__background" style={{backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` }}></div>       */}
+      <div className="movie-container"  >     
       <div className="movie-container__background" style={movie.backdrop_path ? {backgroundImage: `url(${IMGURL}w1280${movie.backdrop_path})` } : {backgoundColor: 'white'}}></div>
         <div className="movie-container__overlay"></div>      
         <div className="movie-container__content">         
             <h1>{movie.title}</h1>
             <p>{movie.overview}</p>                       
           
-          <div className="movie-mid-section">
-            <img className="movie-img" src={ `${IMGURL}w342${movie.poster_path}`} alt="movie poster" />
+          <div className="movie-mid-section">            
+            <img className="movie-img" src={movie.poster_path ?  `${IMGURL}w342${movie.poster_path}` : "" } alt="movie poster" />
             <div className="movie-stats">
               <div>{`Rating: ${movie.vote_average}`}</div>
               <div>{`Runtime: ${movie.runtime}`}</div>
@@ -76,32 +77,12 @@ function Movie({ match, history}) {
               </button>
               {movieUrl && <button className="btn">
               <a href={movieUrl} target="_blank"  rel="noopener noreferrer">Trailer</a>
-              </button> }
-                      
-            </div>
-          
-          
-          
+              </button> }                      
+            </div>          
         </div>       
       </div>   
     
   ); 
 }
-
-function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
-  try {
-    decimalCount = Math.abs(decimalCount);
-    decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
-
-    const negativeSign = amount < 0 ? "-" : "";
-
-    let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
-    let j = (i.length > 3) ? i.length % 3 : 0;
-
-    return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
-  } catch (e) {
-    console.log(e)
-  }
-};
 
 export default Movie;

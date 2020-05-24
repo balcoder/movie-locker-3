@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import searchIcon from '../magnifying-glass.svg';
+import PropTypes from 'prop-types';
 
 function Header(props) {
   //using array destructuring to give different names to state variables
@@ -65,6 +66,12 @@ function Header(props) {
       </form>
     </div>
   );
+}
+
+Header.propTypes = {
+  handleSelect: PropTypes.func,
+  handleSearch: PropTypes.func,
+  handleSubmit: PropTypes.func
 }
 
 export default Header;
