@@ -35,7 +35,7 @@ class Home extends Component {
     return (pageNumbers);
   }
 
-  render() {    
+  render() {      
     let pageNumbers = this.renderPagelinks();    
     let noBlankImages = this.props.currentView.filter(movie => movie.poster_path);    
     let movies = noBlankImages.map((movie) => {

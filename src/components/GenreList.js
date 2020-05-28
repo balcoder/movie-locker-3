@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function GenreList({ genreIds }) {       
   let links = genreIds.map((val, index) => {
-    if(index === 0) {
+    if(index === 0) { // make first one active
       return (
         <li
          key={val.id}

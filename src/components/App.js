@@ -11,8 +11,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {      
-      currentViewList: [],
-      currentView: [],
+      currentViewList: [], // 10 objects of 20 movies
+      currentView: [], // current 20 movies objects
       genreIds: [],
       currentPage: 1,
       numPages: 1,
@@ -25,14 +25,13 @@ class App extends Component {
     this.handleClickPage = this.handleClickPage.bind(this);
     this.handleUpdateView = this.handleUpdateView.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
-    
+    this.handleSelect = this.handleSelect.bind(this);    
 
   }
   // Get initial view of popular movies
   async loadPopular() {
     try {
-      //getPopular returns Promise.all with each page of 20 movies     
+      // getPopular returns Promise.all with each page of 20 movies     
       let currentViewList =  await apiCalls.getPopular(); 
       let numPages = currentViewList.length;           
       let currentView = getPage(this.state.currentPage, currentViewList);           
@@ -88,13 +87,14 @@ class App extends Component {
       numPages
     })
   }
-
+  // when page num clicked load that page from currentViewList
   handleClickPage(e) {
       let pageNum = e.target.id;            
       let nextView = getPage(pageNum, this.state.currentViewList);      
       this.setState({currentPage: parseInt(pageNum, 10), currentView: nextView});      
     }
     
+    // load genre clicked on using the id from the url
     handleUpdateView(id) {
       this.loadGenresWithIds(id);      
     }
@@ -108,12 +108,7 @@ class App extends Component {
       this.loadSelected(term);
       this.setState({currentPage: 1});
     }
-  
 
-  componentDidMount()  {
-    
-  }
-  
   render() {
     return (
       <div className="App">
@@ -129,7 +124,7 @@ class App extends Component {
         numPages={this.state.numPages}
         currentPage={this.state.currentPage}
         handleClickPage={this.handleClickPage}
-        handleUpdateView={this.handleUpdateView}
+        handleUpdateView={this.handleUpdateView}        
         />        
        <Footer />
       </div>

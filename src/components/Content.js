@@ -12,8 +12,8 @@ function Content( props ) {
       <GenreList
       {...props}
        />
-      <Switch>
-        <Route  exact path="/" render={({match }) => (
+      <Switch>        
+        <Route  exact path="/(|movie-locker-3)" render={({match }) => ( 
               <Home
               {...match}
               {...props} />
@@ -32,7 +32,7 @@ function Content( props ) {
             )}
           />           
       </Switch>     
-      </div>
+    </div>
   );
 }
 

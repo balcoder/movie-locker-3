@@ -57,6 +57,7 @@ function Movie({ match, history}) {
         <div className="movie-container__overlay"></div>      
         <div className="movie-container__content">         
             <h1>{movie.title}</h1>
+            <h3>{movie.tagline ? movie.tagline : ""}</h3>
             <p>{movie.overview}</p>                       
           
           <div className="movie-mid-section">            
