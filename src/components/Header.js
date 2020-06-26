@@ -40,7 +40,7 @@ function Header(props) {
  
   return (
     <div className="header">
-      <div className="logo"><a href="/">Movie<span>Locker</span></a></div>      
+      <div className="logo"><a href="/movie-locker-3/">Movie<span>Locker</span></a></div>      
       <form
         onSubmit={handleSubmit}
         className="search">
