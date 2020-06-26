@@ -4,7 +4,8 @@ This is a movie SPA built using React and using [The Movie Database  API](https:
 this app was to create a place to search and browse for movies new and old using real data from the movie database,
 providing some overview information with links to trailers and rating.
 
-## [View on Github Pages](https://balcoder.github.io/movie-locker-3/)
+
+## <a href="https://balcoder.github.io/movie-locker-3/" target="_blank">View on Github Pages</a>
 
 
 ## Main Features
@@ -13,14 +14,16 @@ Browse popular movies on startup, search for movies by partial title or full, fi
 in cinema or top rated. Get brief description of the movie and link to the trailer on youtube.
 
 * uses PropTypes for type checking
+* async await and fetch for loading dynamic data from movie database
 * react-router-dom for the links, switch and routing
-* react-reveal for the zomm effets
+* react-reveal for the zoom effets
+* bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
 ## Copyright and License
 
-Copyright 2013-2019 DbWebWorks. Code released under the [MIT](https://opensource.org/licenses/MIT) license.
+Copyright 2013-2020 DbWebWorks. Code released under the [MIT](https://opensource.org/licenses/MIT) license.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+***
 
 ## Available Scripts
 
