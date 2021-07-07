@@ -6,6 +6,7 @@ providing some overview information with links to trailers and rating.
 
 
 ## <a href="https://balcoder.github.io/movie-locker-3/" target="_blank">View on Github Pages</a>
+![alt text](https://github.com/[balcoder]/[movie-locker-3]/blob/[master]/screenshot.png?raw=true)
 
 
 ## Main Features
