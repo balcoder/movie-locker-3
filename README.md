@@ -22,7 +22,7 @@ in cinema or top rated. Get brief description of the movie and link to the trail
 
 ## Copyright and License
 
-Copyright 2013-2020 DbWebWorks. Code released under the [MIT](https://opensource.org/licenses/MIT) license.
+Copyright 2013-2021 Des Barrett DbWebWorks. Code released under the [MIT](https://opensource.org/licenses/MIT) license.
 
 ***
 
